@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { apiUrl } from "../lib/api";
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -11,7 +12,7 @@ export default function Register() {
 
   const handleRegister = async () => {
     try {
-      const res = await fetch("http://127.0.0.1:5000/register", {
+      const res = await fetch(apiUrl("/register"), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

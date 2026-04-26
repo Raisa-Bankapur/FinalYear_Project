@@ -10,6 +10,7 @@ import {
   useState,
 } from "react";
 import AuthGuard from "../components/AuthGuard";
+import { apiUrl } from "../lib/api";
 
 const Map = dynamic(() => import("../components/Map"), {
   ssr: false,
@@ -253,7 +254,7 @@ export default function PlannerPage() {
     setSelectedHotel(null);
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/generate_itinerary", {
+      const response = await fetch(apiUrl("/generate_itinerary"), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
