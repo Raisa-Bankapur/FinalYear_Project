@@ -7,7 +7,18 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)
+
+allowed_origins = [
+    "https://final-year-project-rho-green.vercel.app",
+    "http://localhost:3000",
+]
+
+CORS(
+    app,
+    resources={r"/*": {"origins": allowed_origins}},
+    methods=["GET", "POST", "OPTIONS"],
+    allow_headers=["Content-Type"],
+)
 
 DATA_FILE = Path(__file__).with_name("users.json")
 trips = []
