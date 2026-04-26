@@ -1,4 +1,5 @@
 import json
+import os
 from pathlib import Path
 from urllib.parse import quote
 from urllib.request import Request, urlopen
@@ -863,4 +864,5 @@ def generate_itinerary():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
